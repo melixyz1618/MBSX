@@ -21,6 +21,7 @@
             btnShowroom = new Button();
             btnUrun = new Button();
             lblSoru = new Label();
+            btnGeri = new Button();
             SuspendLayout();
             // 
             // btnShowroom
@@ -52,10 +53,21 @@
             lblSoru.TabIndex = 2;
             lblSoru.Text = "Yeni bir showroom mu? Yeni bir ürün mü?";
             // 
+            // btnGeri
+            // 
+            btnGeri.Location = new Point(653, 23);
+            btnGeri.Name = "btnGeri";
+            btnGeri.Size = new Size(94, 29);
+            btnGeri.TabIndex = 3;
+            btnGeri.Text = "Geri";
+            btnGeri.UseVisualStyleBackColor = true;
+            btnGeri.Click += btnGeri_Click;
+            // 
             // YeniKayıtSeçimFormu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnGeri);
             Controls.Add(btnShowroom);
             Controls.Add(btnUrun);
             Controls.Add(lblSoru);
@@ -65,5 +77,6 @@
             ResumeLayout(false);
             PerformLayout();
         }
+        private Button btnGeri;
     }
 }

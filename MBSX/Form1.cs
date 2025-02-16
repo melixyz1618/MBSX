@@ -19,11 +19,17 @@ namespace MBSX
             // Eðer panelContainer varsa, içeriðini temizleyip yeni UserControl ekle
             if (this.panelContainer != null)
             {
-                this.panelContainer.Controls.Clear();
+                // Mevcut butonlarý gizle
+                btnYeniKayit.Visible = false;
+                btnKayitGuncelle.Visible = false;
+                btnKayitAra.Visible = false;
 
+                // Yeni kayýt seçim formunu oluþtur
                 YeniKayýtSeçimFormu yeniKayitSecim = new YeniKayýtSeçimFormu();
                 yeniKayitSecim.Dock = DockStyle.Fill; // Paneli tam kaplasýn
 
+                // Paneli temizleyip yeni UserControl ekle
+                this.panelContainer.Controls.Clear();
                 this.panelContainer.Controls.Add(yeniKayitSecim);
                 yeniKayitSecim.BringToFront(); // Kullanýcýya göster
             }
@@ -32,6 +38,7 @@ namespace MBSX
                 MessageBox.Show("panelContainer bulunamadý!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
 

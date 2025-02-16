@@ -52,5 +52,21 @@ namespace MBSX
         {
             // Gerekli başlangıç işlemleri burada yapılabilir.
         }
+
+        private void btnGeri_Click(object sender, EventArgs e)
+        {
+            // Yeni içeriği kaldır
+            this.Parent.Controls.Clear();
+
+            // Önceki butonları tekrar göster
+            Form1 anaForm = (Form1)Application.OpenForms["Form1"];
+            if (anaForm != null)
+            {
+                anaForm.btnYeniKayit.Visible = true;
+                anaForm.btnKayitGuncelle.Visible = true;
+                anaForm.btnKayitAra.Visible = true;
+            }
+        }
+
     }
 }

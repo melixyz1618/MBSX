@@ -53,9 +53,9 @@
             // 
             // panelContainer
             // 
-            panelContainer.Location = new Point(20, 60);
+            panelContainer.Location = new Point(-1, 0);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(760, 400);
+            panelContainer.Size = new Size(781, 452);
             panelContainer.TabIndex = 5;
             // 
             // Form1
@@ -70,9 +70,9 @@
             Load += Form1_Load;
             ResumeLayout(false);
         }
-        private System.Windows.Forms.Button btnYeniKayit;
-        private System.Windows.Forms.Button btnKayitGuncelle;
-        private System.Windows.Forms.Button btnKayitAra;
+        public System.Windows.Forms.Button btnYeniKayit;
+        public System.Windows.Forms.Button btnKayitGuncelle;
+        public System.Windows.Forms.Button btnKayitAra;
         private Panel panelContainer;
     }
 }
