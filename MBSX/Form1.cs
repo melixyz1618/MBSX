@@ -18,11 +18,15 @@ namespace MBSX
         {
             if (this.panelContainer != null)
             {
-                this.panelContainer.Controls.Clear();
+                // Önce mevcut butonlarý gizle
+                btnYeniKayit.Visible = false;
+                btnKayitGuncelle.Visible = false;
+                btnKayitAra.Visible = false;
 
+                // `YeniKayýtSeçimFormu` ekranýný aç
+                this.panelContainer.Controls.Clear();
                 YeniKayýtSeçimFormu yeniKayitSecim = new YeniKayýtSeçimFormu(this);
                 yeniKayitSecim.Dock = DockStyle.Fill;
-
                 this.panelContainer.Controls.Add(yeniKayitSecim);
                 yeniKayitSecim.BringToFront();
             }
@@ -32,13 +36,29 @@ namespace MBSX
             }
         }
 
+
         private void btnShowroom_Click(object sender, EventArgs e)
         {
-            var showroomForm = new ShowroomForm(this);
-            showroomForm.Dock = DockStyle.Fill;
-            panelContainer.Controls.Clear();
-            panelContainer.Controls.Add(showroomForm);
+            if (this.panelContainer != null)
+            {
+                this.panelContainer.Controls.Clear();
+
+                // Önce YeniKayýtSeçimFormu'nu oluþtur
+                YeniKayýtSeçimFormu yeniKayitSecim = new YeniKayýtSeçimFormu(this);
+
+                // Þimdi ShowroomForm'u, YeniKayýtSeçimFormu referansýyla birlikte baþlat
+                ShowroomForm showroomForm = new ShowroomForm(this, yeniKayitSecim);
+                showroomForm.Dock = DockStyle.Fill;
+
+                this.panelContainer.Controls.Add(showroomForm);
+                showroomForm.BringToFront();
+            }
+            else
+            {
+                MessageBox.Show("panelContainer bulunamadý!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void btnKayitGuncelle_Click(object sender, EventArgs e)
         {

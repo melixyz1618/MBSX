@@ -17,23 +17,19 @@ namespace MBSX
         {
             if (form1 != null)
             {
-                ShowroomForm showroomForm = new ShowroomForm(form1);
-
-                Form formContainer = new Form
-                {
-                    Text = "Showroom Ekleme",
-                    Size = new System.Drawing.Size(500, 400),
-                    StartPosition = FormStartPosition.CenterScreen
-                };
+                form1.panelContainer.Controls.Clear();
+                ShowroomForm showroomForm = new ShowroomForm(form1, this); // Şu anki ekranı gönder
                 showroomForm.Dock = DockStyle.Fill;
-                formContainer.Controls.Add(showroomForm);
-                formContainer.ShowDialog();
+                form1.panelContainer.Controls.Add(showroomForm);
+                showroomForm.BringToFront();
             }
             else
             {
                 MessageBox.Show("Ana form bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
         private void btnUrun_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Ürün ekleme işlemi seçildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -41,7 +37,7 @@ namespace MBSX
 
         private void btnGeri_Click(object sender, EventArgs e)
         {
-            // Geri tuşuna basınca önceki ekranı göster
+            // Yeni içeriği kaldır
             this.Parent.Controls.Clear();
 
             // Form1 içindeki butonları tekrar göster
@@ -53,6 +49,7 @@ namespace MBSX
                 anaForm.btnKayitAra.Visible = true;
             }
         }
+
 
         private void YeniKayıtSeçimFormu_Load(object sender, EventArgs e)
         {

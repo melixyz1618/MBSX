@@ -20,6 +20,7 @@ namespace MBSX
             btnKaydet = new Button();
             txtShowroomAdi = new TextBox();
             label1 = new Label();
+            btnShowroomGeri = new Button();
             SuspendLayout();
             // 
             // btnIptal
@@ -55,17 +56,27 @@ namespace MBSX
             label1.TabIndex = 5;
             label1.Text = "Showroom Adı :";
             // 
+            // btnShowroomGeri
+            // 
+            btnShowroomGeri.Location = new Point(670, 23);
+            btnShowroomGeri.Name = "btnShowroomGeri";
+            btnShowroomGeri.Size = new Size(94, 29);
+            btnShowroomGeri.TabIndex = 6;
+            btnShowroomGeri.Text = "Geri";
+            btnShowroomGeri.UseVisualStyleBackColor = true;
+            btnShowroomGeri.Click += btnShowroomGeri_Click;
+            // 
             // ShowroomForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            Controls.Add(btnShowroomGeri);
             Controls.Add(btnIptal);
             Controls.Add(btnKaydet);
             Controls.Add(txtShowroomAdi);
             Controls.Add(label1);
             Name = "ShowroomForm";
-            Text = "ShowroomForm";
+            Size = new Size(800, 450);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -75,5 +86,6 @@ namespace MBSX
         private Button btnKaydet;
         private Button btnIptal;
         private EventHandler ShowroomForm_Load;
+        private Button btnShowroomGeri;
     }
 }

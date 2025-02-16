@@ -7,11 +7,13 @@ namespace MBSX
     public partial class ShowroomForm : UserControl
     {
         private Form1 form1; // MainForm yerine Form1 kullanıyoruz
+        private YeniKayıtSeçimFormu previousScreen; // Önceki ekranı sakla
 
-        public ShowroomForm(Form1 form1)
+        public ShowroomForm(Form1 form1, YeniKayıtSeçimFormu previousScreen)
         {
             InitializeComponent();
             this.form1 = form1;
+            this.previousScreen = previousScreen;
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
@@ -40,10 +42,15 @@ namespace MBSX
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Kayıt başarıyla eklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Form1 içindeki panelContainer'ı temizle
+                        // 1️⃣ Önce panelContainer'ı temizle
                         if (form1 != null)
                         {
                             form1.panelContainer.Controls.Clear();
+
+                            // 2️⃣ Ana ekrandaki butonları tekrar göster
+                            form1.btnYeniKayit.Visible = true;
+                            form1.btnKayitGuncelle.Visible = true;
+                            form1.btnKayitAra.Visible = true;
                         }
                     }
                     catch (Exception ex)
@@ -51,6 +58,16 @@ namespace MBSX
                         MessageBox.Show("Veritabanı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void btnShowroomGeri_Click(object sender, EventArgs e)
+        {
+            if (form1 != null && previousScreen != null)
+            {
+                form1.panelContainer.Controls.Clear(); // Showroom ekranını kaldır
+                form1.panelContainer.Controls.Add(previousScreen); // `YeniKayıtSeçimFormu` geri yükle
+                previousScreen.BringToFront();
             }
         }
     }
