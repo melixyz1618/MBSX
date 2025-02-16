@@ -1,0 +1,9 @@
+# Visual Studio ile ilgili gereksiz dosyalar
+.vs/
+*.user
+*.suo
+*.cache
+*.pdb
+bin/
+obj/
+*.log
