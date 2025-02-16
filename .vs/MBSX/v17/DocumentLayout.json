@@ -1,0 +1,120 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\melix\\source\\repos\\MBSX\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{47A66A8A-A14C-428A-92DF-9E2C9B024214}|MBSX\\MBSX.csproj|c:\\users\\melix\\source\\repos\\mbsx\\mbsx\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47A66A8A-A14C-428A-92DF-9E2C9B024214}|MBSX\\MBSX.csproj|solutionrelative:mbsx\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47A66A8A-A14C-428A-92DF-9E2C9B024214}|MBSX\\MBSX.csproj|c:\\users\\melix\\source\\repos\\mbsx\\mbsx\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47A66A8A-A14C-428A-92DF-9E2C9B024214}|MBSX\\MBSX.csproj|solutionrelative:mbsx\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47A66A8A-A14C-428A-92DF-9E2C9B024214}|MBSX\\MBSX.csproj|c:\\users\\melix\\source\\repos\\mbsx\\mbsx\\showroomform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47A66A8A-A14C-428A-92DF-9E2C9B024214}|MBSX\\MBSX.csproj|solutionrelative:mbsx\\showroomform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47A66A8A-A14C-428A-92DF-9E2C9B024214}|MBSX\\MBSX.csproj|C:\\Users\\melix\\source\\repos\\MBSX\\mbsx\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{47A66A8A-A14C-428A-92DF-9E2C9B024214}|MBSX\\MBSX.csproj|solutionrelative:mbsx\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47A66A8A-A14C-428A-92DF-9E2C9B024214}|MBSX\\MBSX.csproj|C:\\Users\\melix\\source\\repos\\MBSX\\mbsx\\showroomform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{47A66A8A-A14C-428A-92DF-9E2C9B024214}|MBSX\\MBSX.csproj|solutionrelative:mbsx\\showroomform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{47A66A8A-A14C-428A-92DF-9E2C9B024214}|MBSX\\MBSX.csproj|c:\\users\\melix\\source\\repos\\mbsx\\mbsx\\showroomform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{47A66A8A-A14C-428A-92DF-9E2C9B024214}|MBSX\\MBSX.csproj|solutionrelative:mbsx\\showroomform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ShowroomForm.cs",
+              "DocumentMoniker": "C:\\Users\\melix\\source\\repos\\MBSX\\MBSX\\ShowroomForm.cs",
+              "RelativeDocumentMoniker": "MBSX\\ShowroomForm.cs",
+              "ToolTip": "C:\\Users\\melix\\source\\repos\\MBSX\\MBSX\\ShowroomForm.cs",
+              "RelativeToolTip": "MBSX\\ShowroomForm.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACYAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T12:08:12.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ShowroomForm.cs [Tasar\u0131m]",
+              "DocumentMoniker": "C:\\Users\\melix\\source\\repos\\MBSX\\MBSX\\ShowroomForm.cs",
+              "RelativeDocumentMoniker": "MBSX\\ShowroomForm.cs",
+              "ToolTip": "C:\\Users\\melix\\source\\repos\\MBSX\\MBSX\\ShowroomForm.cs [Tasar\u0131m]",
+              "RelativeToolTip": "MBSX\\ShowroomForm.cs [Tasar\u0131m]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T12:08:06.257Z",
+              "EditorCaption": " [Tasar\u0131m]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\melix\\source\\repos\\MBSX\\MBSX\\MainForm.cs",
+              "RelativeDocumentMoniker": "MBSX\\MainForm.cs",
+              "ToolTip": "C:\\Users\\melix\\source\\repos\\MBSX\\MBSX\\MainForm.cs*",
+              "RelativeToolTip": "MBSX\\MainForm.cs*",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAuwAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T12:07:44.984Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\melix\\source\\repos\\MBSX\\MBSX\\MainForm.Designer.cs",
+              "RelativeDocumentMoniker": "MBSX\\MainForm.Designer.cs",
+              "ToolTip": "C:\\Users\\melix\\source\\repos\\MBSX\\MBSX\\MainForm.Designer.cs",
+              "RelativeToolTip": "MBSX\\MainForm.Designer.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA+wBMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T12:07:25.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainForm.cs [Tasar\u0131m]",
+              "DocumentMoniker": "C:\\Users\\melix\\source\\repos\\MBSX\\MBSX\\MainForm.cs",
+              "RelativeDocumentMoniker": "MBSX\\MainForm.cs",
+              "ToolTip": "C:\\Users\\melix\\source\\repos\\MBSX\\MBSX\\MainForm.cs [Tasar\u0131m]*",
+              "RelativeToolTip": "MBSX\\MainForm.cs [Tasar\u0131m]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T12:02:52.035Z",
+              "EditorCaption": " [Tasar\u0131m]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ShowroomForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\melix\\source\\repos\\MBSX\\MBSX\\ShowroomForm.Designer.cs",
+              "RelativeDocumentMoniker": "MBSX\\ShowroomForm.Designer.cs",
+              "ToolTip": "C:\\Users\\melix\\source\\repos\\MBSX\\MBSX\\ShowroomForm.Designer.cs",
+              "RelativeToolTip": "MBSX\\ShowroomForm.Designer.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAAAD0AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T12:14:51.45Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
