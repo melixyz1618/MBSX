@@ -17,8 +17,11 @@
 
         private void InitializeComponent()
         {
-            btnShowroom = new Button();
-            SuspendLayout();
+            this.components = new System.ComponentModel.Container();
+            this.panelContainer = new System.Windows.Forms.Panel();
+            this.btnShowroom = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+
             // 
             // panelContainer
             // 
@@ -30,22 +33,23 @@
             // 
             // btnShowroom
             // 
-            btnShowroom.Location = new Point(20, 20);
-            btnShowroom.Name = "btnShowroom";
-            btnShowroom.Size = new Size(150, 30);
-            btnShowroom.TabIndex = 1;
-            btnShowroom.Text = "Showroom";
-            btnShowroom.UseVisualStyleBackColor = true;
-            btnShowroom.Click += btnShowroom_Click;
+            this.btnShowroom.Location = new System.Drawing.Point(20, 20);
+            this.btnShowroom.Name = "btnShowroom";
+            this.btnShowroom.Size = new System.Drawing.Size(150, 30);
+            this.btnShowroom.TabIndex = 1;
+            this.btnShowroom.Text = "Showroom";
+            this.btnShowroom.UseVisualStyleBackColor = true;
+            this.btnShowroom.Click += new System.EventHandler(this.btnShowroom_Click);
+
             // 
             // MainForm
             // 
-            ClientSize = new Size(800, 500);
-            Controls.Add(panelContainer);
-            Controls.Add(btnShowroom);
-            Name = "MainForm";
-            Text = "Ana Menü";
-            ResumeLayout(false);
+            this.ClientSize = new System.Drawing.Size(800, 500);
+            this.Controls.Add(this.panelContainer);
+            this.Controls.Add(this.btnShowroom);
+            this.Name = "MainForm";
+            this.Text = "Ana Menü";
+            this.ResumeLayout(false);
         }
     }
 }
