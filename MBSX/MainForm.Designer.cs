@@ -17,16 +17,15 @@
 
         private void InitializeComponent()
         {
-            panelContainer = new Panel();
             btnShowroom = new Button();
             SuspendLayout();
             // 
             // panelContainer
             // 
-            panelContainer.Location = new Point(20, 60);
-            panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(760, 400);
-            panelContainer.TabIndex = 0;
+            this.panelContainer.Location = new Point(20, 60);
+            this.panelContainer.Name = "panelContainer";
+            this.panelContainer.Size = new Size(760, 400);
+            this.panelContainer.TabIndex = 0;
             // 
             // btnShowroom
             // 
