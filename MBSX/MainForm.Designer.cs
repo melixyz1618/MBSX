@@ -22,10 +22,11 @@
             // 
             // panelContainer
             // 
-            this.panelContainer.Location = new Point(20, 60);
+            this.panelContainer.Location = new System.Drawing.Point(20, 60);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new Size(760, 400);
+            this.panelContainer.Size = new System.Drawing.Size(760, 400);
             this.panelContainer.TabIndex = 0;
+
             // 
             // btnShowroom
             // 
