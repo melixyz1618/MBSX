@@ -5,14 +5,6 @@ namespace MBSX
 {
     public partial class MainForm : Form
     {
-        // panelContainer'ı public yaparak dışarıdan erişilebilir hale getirdim.
-        public Panel panelContainer;
-
-        public MainForm(Panel panelContainer)
-        {
-            this.panelContainer = panelContainer;
-        }
-
         public MainForm()
         {
             InitializeComponent();
@@ -20,16 +12,24 @@ namespace MBSX
 
         private void btnShowroom_Click(object sender, EventArgs e)
         {
-            LoadForm(new ShowroomForm());
+            ShowroomForm showroom = new ShowroomForm(this); // MainForm referansını gönder
+            LoadForm(showroom);
         }
+
 
         private void LoadForm(UserControl form)
         {
-
-            object value = panelContainer.Controls.Clear(); // Önce paneli temizle
-            form.Dock = DockStyle.Fill; // Paneli tam kaplasın
-            object value1 = panelContainer.Controls.Add(form); // Yeni formu panele ekle
-            form.BringToFront(); // Öne getir
+            if (panelContainer != null) // panelContainer'ın null olmadığını doğrula
+            {
+                panelContainer.Controls.Clear(); // Önce paneli temizle
+                form.Dock = DockStyle.Fill; // Paneli tam kaplasın
+                panelContainer.Controls.Add(form); // Yeni formu panele ekle
+                form.BringToFront(); // Öne getir
+            }
+            else
+            {
+                MessageBox.Show("Panel bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

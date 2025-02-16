@@ -6,9 +6,12 @@ namespace MBSX
 {
     public partial class ShowroomForm : UserControl
     {
-        public ShowroomForm()
+        private MainForm mainForm; // MainForm referansı ekledik
+
+        public ShowroomForm(MainForm form)
         {
             InitializeComponent();
+            this.mainForm = form; // MainForm'u kaydet
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
@@ -36,11 +39,16 @@ namespace MBSX
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Kayıt başarıyla eklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ((MainForm)this.ParentForm).panelContainer.Controls.Clear(); // Paneli temizle
+
+                        // panelContainer'ı MainForm üzerinden temizle
+                        if (mainForm != null)
+                        {
+                            mainForm.panelContainer.Controls.Clear();
+                        }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Veri tabanı hatası -- Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Veritabanı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

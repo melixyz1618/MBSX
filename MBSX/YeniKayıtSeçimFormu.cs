@@ -10,27 +10,47 @@ namespace MBSX
             InitializeComponent();
         }
 
-        internal void ShowDialog()
-        {
-            throw new NotImplementedException();
-        }
-
         private void btnShowroom_Click(object sender, EventArgs e)
         {
-            ShowroomForm showroomForm = new ShowroomForm(); // Form nesnesi oluştur
-            showroomForm.ShowDialog(); // Modsal olarak aç
-        }
+            if (this.ParentForm is MainForm mainForm)
+            {
+                ShowroomForm showroomForm = new ShowroomForm(mainForm);
 
+                // ShowroomForm'u yeni bir form içine alıp göster
+                Form formContainer = new Form
+                {
+                    Text = "Showroom Ekleme",
+                    Size = new System.Drawing.Size(500, 400),
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                showroomForm.Dock = DockStyle.Fill;
+                formContainer.Controls.Add(showroomForm);
+                formContainer.ShowDialog(); // Yeni formu aç
+            }
+            else
+            {
+                MessageBox.Show("Ana form bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void btnUrun_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Ürün ekleme işlemi seçildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close(); // Formu kapat
+
+            // Form kapatma işlemi
+            if (this.ParentForm != null)
+            {
+                this.ParentForm.Close();
+            }
+            else
+            {
+                this.Dispose();
+            }
         }
 
         private void YeniKayıtSeçimFormu_Load(object sender, EventArgs e)
         {
-
+            // Gerekli başlangıç işlemleri burada yapılabilir.
         }
     }
 }

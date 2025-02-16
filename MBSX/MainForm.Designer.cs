@@ -3,7 +3,7 @@
     partial class MainForm
     {
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.Panel panelContainer;
+        public System.Windows.Forms.Panel panelContainer;
         private System.Windows.Forms.Button btnShowroom;
 
         protected override void Dispose(bool disposing)
