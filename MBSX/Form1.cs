@@ -16,20 +16,23 @@ namespace MBSX
 
         private void btnYeniKayit_Click(object sender, EventArgs e)
         {
-            // Yeni bir Form oluþtur ve içine `YeniKayýtSeçimFormu` ekle
-            Form yeniKayitForm = new Form
+            // Eðer panelContainer varsa, içeriðini temizleyip yeni UserControl ekle
+            if (this.panelContainer != null)
             {
-                Text = "Yeni Kayýt Seçimi",
-                Size = new System.Drawing.Size(800, 500),
-                StartPosition = FormStartPosition.CenterScreen
-            };
+                this.panelContainer.Controls.Clear();
 
-            YeniKayýtSeçimFormu yeniKayitSecim = new YeniKayýtSeçimFormu();
-            yeniKayitSecim.Dock = DockStyle.Fill;
+                YeniKayýtSeçimFormu yeniKayitSecim = new YeniKayýtSeçimFormu();
+                yeniKayitSecim.Dock = DockStyle.Fill; // Paneli tam kaplasýn
 
-            yeniKayitForm.Controls.Add(yeniKayitSecim);
-            yeniKayitForm.ShowDialog(); // Yeni formu aç
+                this.panelContainer.Controls.Add(yeniKayitSecim);
+                yeniKayitSecim.BringToFront(); // Kullanýcýya göster
+            }
+            else
+            {
+                MessageBox.Show("panelContainer bulunamadý!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
 
         private void btnKayitGuncelle_Click(object sender, EventArgs e)

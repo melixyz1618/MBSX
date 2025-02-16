@@ -18,6 +18,7 @@
             btnYeniKayit = new Button();
             btnKayitGuncelle = new Button();
             btnKayitAra = new Button();
+            panelContainer = new Panel();
             SuspendLayout();
             // 
             // btnYeniKayit
@@ -50,12 +51,20 @@
             btnKayitAra.UseVisualStyleBackColor = true;
             btnKayitAra.Click += btnKayitAra_Click;
             // 
+            // panelContainer
+            // 
+            panelContainer.Location = new Point(20, 60);
+            panelContainer.Name = "panelContainer";
+            panelContainer.Size = new Size(760, 400);
+            panelContainer.TabIndex = 5;
+            // 
             // Form1
             // 
             ClientSize = new Size(782, 453);
             Controls.Add(btnKayitAra);
             Controls.Add(btnKayitGuncelle);
             Controls.Add(btnYeniKayit);
+            Controls.Add(panelContainer);
             Name = "Form1";
             Text = "MBSX Uygulaması";
             Load += Form1_Load;
@@ -64,5 +73,6 @@
         private System.Windows.Forms.Button btnYeniKayit;
         private System.Windows.Forms.Button btnKayitGuncelle;
         private System.Windows.Forms.Button btnKayitAra;
+        private Panel panelContainer;
     }
 }
