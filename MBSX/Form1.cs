@@ -1,37 +1,30 @@
 using System;
-using System.Drawing;
-using System.Runtime.Versioning;
 using System.Windows.Forms;
-using System.Runtime.Versioning;
 
 namespace MBSX
 {
-    [SupportedOSPlatform("windows")]
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Form açýldýðýnda yapýlacak iþlemler buraya yazýlabilir
+        }
 
         private void btnYeniKayit_Click(object sender, EventArgs e)
         {
-            // Eðer panelContainer varsa, içeriðini temizleyip yeni UserControl ekle
             if (this.panelContainer != null)
             {
-                // Mevcut butonlarý gizle
-                btnYeniKayit.Visible = false;
-                btnKayitGuncelle.Visible = false;
-                btnKayitAra.Visible = false;
-
-                // Yeni kayýt seçim formunu oluþtur
-                YeniKayýtSeçimFormu yeniKayitSecim = new YeniKayýtSeçimFormu();
-                yeniKayitSecim.Dock = DockStyle.Fill; // Paneli tam kaplasýn
-
-                // Paneli temizleyip yeni UserControl ekle
                 this.panelContainer.Controls.Clear();
+
+                YeniKayýtSeçimFormu yeniKayitSecim = new YeniKayýtSeçimFormu(this);
+                yeniKayitSecim.Dock = DockStyle.Fill;
+
                 this.panelContainer.Controls.Add(yeniKayitSecim);
-                yeniKayitSecim.BringToFront(); // Kullanýcýya göster
+                yeniKayitSecim.BringToFront();
             }
             else
             {
@@ -39,8 +32,13 @@ namespace MBSX
             }
         }
 
-
-
+        private void btnShowroom_Click(object sender, EventArgs e)
+        {
+            var showroomForm = new ShowroomForm(this);
+            showroomForm.Dock = DockStyle.Fill;
+            panelContainer.Controls.Clear();
+            panelContainer.Controls.Add(showroomForm);
+        }
 
         private void btnKayitGuncelle_Click(object sender, EventArgs e)
         {
@@ -51,10 +49,7 @@ namespace MBSX
         {
             MessageBox.Show("Kayýt arama ekraný açýlacak.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
+
+
 }

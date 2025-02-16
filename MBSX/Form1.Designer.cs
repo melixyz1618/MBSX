@@ -73,6 +73,6 @@
         public System.Windows.Forms.Button btnYeniKayit;
         public System.Windows.Forms.Button btnKayitGuncelle;
         public System.Windows.Forms.Button btnKayitAra;
-        private Panel panelContainer;
+        public Panel panelContainer;
     }
 }

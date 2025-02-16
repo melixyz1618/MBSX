@@ -5,18 +5,20 @@ namespace MBSX
 {
     public partial class YeniKayıtSeçimFormu : UserControl
     {
-        public YeniKayıtSeçimFormu()
+        private Form1 form1;
+
+        public YeniKayıtSeçimFormu(Form1 form1)
         {
             InitializeComponent();
+            this.form1 = form1;
         }
 
         private void btnShowroom_Click(object sender, EventArgs e)
         {
-            if (this.ParentForm is MainForm mainForm)
+            if (form1 != null)
             {
-                ShowroomForm showroomForm = new ShowroomForm(mainForm);
+                ShowroomForm showroomForm = new ShowroomForm(form1);
 
-                // ShowroomForm'u yeni bir form içine alıp göster
                 Form formContainer = new Form
                 {
                     Text = "Showroom Ekleme",
@@ -25,40 +27,24 @@ namespace MBSX
                 };
                 showroomForm.Dock = DockStyle.Fill;
                 formContainer.Controls.Add(showroomForm);
-                formContainer.ShowDialog(); // Yeni formu aç
+                formContainer.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Ana form bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnUrun_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Ürün ekleme işlemi seçildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Form kapatma işlemi
-            if (this.ParentForm != null)
-            {
-                this.ParentForm.Close();
-            }
-            else
-            {
-                this.Dispose();
-            }
-        }
-
-        private void YeniKayıtSeçimFormu_Load(object sender, EventArgs e)
-        {
-            // Gerekli başlangıç işlemleri burada yapılabilir.
         }
 
         private void btnGeri_Click(object sender, EventArgs e)
         {
-            // Yeni içeriği kaldır
+            // Geri tuşuna basınca önceki ekranı göster
             this.Parent.Controls.Clear();
 
-            // Önceki butonları tekrar göster
+            // Form1 içindeki butonları tekrar göster
             Form1 anaForm = (Form1)Application.OpenForms["Form1"];
             if (anaForm != null)
             {
@@ -66,6 +52,11 @@ namespace MBSX
                 anaForm.btnKayitGuncelle.Visible = true;
                 anaForm.btnKayitAra.Visible = true;
             }
+        }
+
+        private void YeniKayıtSeçimFormu_Load(object sender, EventArgs e)
+        {
+            // Form yüklendiğinde çalışacak kodlar buraya yazılabilir
         }
 
     }

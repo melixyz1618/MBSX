@@ -6,55 +6,52 @@ namespace MBSX
 {
     public partial class ShowroomForm : UserControl
     {
-        private MainForm  mainForm;
+        private Form1 form1; // MainForm yerine Form1 kullanıyoruz
 
-        public ShowroomForm(MainForm mainForm)
+        public ShowroomForm(Form1 form1)
         {
             InitializeComponent();
-            mainForm = mainForm;
+            this.form1 = form1;
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            string showroomAdi = txtShowroomAdi.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(showroomAdi))
             {
-                string showroomAdi = txtShowroomAdi.Text.Trim();
+                MessageBox.Show("Lütfen showroom adını girin!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                if (string.IsNullOrWhiteSpace(showroomAdi))
+            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Veritabanı\MBSX.mdb;";
+            string query = "INSERT INTO showroom (Showroom_Adi, Kayit_Zamani) VALUES (@isim, @tarih)";
+
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            {
+                using (OleDbCommand cmd = new OleDbCommand(query, conn))
                 {
-                    MessageBox.Show("Lütfen showroom adını girin!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                    cmd.Parameters.AddWithValue("@isim", showroomAdi);
+                    cmd.Parameters.AddWithValue("@tarih", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
-                string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Veritabanı\MBSX.mdb;";
-                string query = "INSERT INTO showroom (Showroom_Adi, Kayit_Zamani) VALUES (@isim, @tarih)";
-
-                using (OleDbConnection conn = new OleDbConnection(connectionString))
-                {
-                    using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                    try
                     {
-                        cmd.Parameters.AddWithValue("@isim", showroomAdi);
-                        cmd.Parameters.AddWithValue("@tarih", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Kayıt başarıyla eklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        try
+                        // Form1 içindeki panelContainer'ı temizle
+                        if (form1 != null)
                         {
-                            conn.Open();
-                            cmd.ExecuteNonQuery();
-                            MessageBox.Show("Kayıt başarıyla eklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            // panelContainer'ı MainForm üzerinden temizle
-                            if (mainForm != null)
-                            {
-                                mainForm.panelContainer.Controls.Clear();
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Veritabanı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            form1.panelContainer.Controls.Clear();
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Veritabanı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-            // Kayıt başarılıysa, paneli temizle
-            mainForm.panelContainer.Controls.Clear();
-        }
+            }
         }
     }
-
+}
