@@ -6,52 +6,55 @@ namespace MBSX
 {
     public partial class ShowroomForm : UserControl
     {
-        private MainForm mainForm; // MainForm referansı ekledik
+        private MainForm  mainForm;
 
-        public ShowroomForm(MainForm form)
+        public ShowroomForm(MainForm mainForm)
         {
             InitializeComponent();
-            this.mainForm = form; // MainForm'u kaydet
+            mainForm = mainForm;
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
-        {
-            string showroomAdi = txtShowroomAdi.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(showroomAdi))
             {
-                MessageBox.Show("Lütfen showroom adını girin!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                string showroomAdi = txtShowroomAdi.Text.Trim();
 
-            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Veritabanı\MBSX.mdb;";
-            string query = "INSERT INTO showroom (Showroom_Adi, Kayit_Zamani) VALUES (@isim, @tarih)";
-
-            using (OleDbConnection conn = new OleDbConnection(connectionString))
-            {
-                using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                if (string.IsNullOrWhiteSpace(showroomAdi))
                 {
-                    cmd.Parameters.AddWithValue("@isim", showroomAdi);
-                    cmd.Parameters.AddWithValue("@tarih", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                    MessageBox.Show("Lütfen showroom adını girin!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                    try
+                string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Veritabanı\MBSX.mdb;";
+                string query = "INSERT INTO showroom (Showroom_Adi, Kayit_Zamani) VALUES (@isim, @tarih)";
+
+                using (OleDbConnection conn = new OleDbConnection(connectionString))
+                {
+                    using (OleDbCommand cmd = new OleDbCommand(query, conn))
                     {
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Kayıt başarıyla eklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cmd.Parameters.AddWithValue("@isim", showroomAdi);
+                        cmd.Parameters.AddWithValue("@tarih", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
-                        // panelContainer'ı MainForm üzerinden temizle
-                        if (mainForm != null)
+                        try
                         {
-                            mainForm.panelContainer.Controls.Clear();
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Kayıt başarıyla eklendi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // panelContainer'ı MainForm üzerinden temizle
+                            if (mainForm != null)
+                            {
+                                mainForm.panelContainer.Controls.Clear();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Veritabanı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Veritabanı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                 }
-            }
+            // Kayıt başarılıysa, paneli temizle
+            mainForm.panelContainer.Controls.Clear();
+        }
         }
     }
-}
+

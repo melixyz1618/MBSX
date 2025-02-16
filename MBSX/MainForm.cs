@@ -12,9 +12,12 @@ namespace MBSX
 
         private void btnShowroom_Click(object sender, EventArgs e)
         {
-            ShowroomForm showroom = new ShowroomForm(this); // MainForm referansını gönder
-            LoadForm(showroom);
+            var showroomForm = new ShowroomForm(this);
+            showroomForm.Dock = DockStyle.Fill;
+            panelContainer.Controls.Clear();
+            panelContainer.Controls.Add(showroomForm);
         }
+
 
 
         private void LoadForm(UserControl form)
