@@ -39,6 +39,8 @@
             btnGeri.TabIndex = 0;
             btnGeri.Text = "Geri";
             btnGeri.UseVisualStyleBackColor = true;
+            btnGeri.Click += new System.EventHandler(this.btnGeri_Click); // 📌 Buton event'ini buraya ekledik!
+
             // 
             // KaroMalzemeFormu
             // 
@@ -49,6 +51,7 @@
             Size = new Size(782, 453);
             ResumeLayout(false);
         }
+
 
         #endregion
 

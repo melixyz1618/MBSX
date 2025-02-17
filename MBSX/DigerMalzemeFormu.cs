@@ -13,7 +13,13 @@ namespace MBSX
             InitializeComponent();
             this.form1 = form1;
             this.previousScreen = previousScreen;
+
+            if (previousScreen == null)
+            {
+                MessageBox.Show("previousScreen değeri NULL! Lütfen kontrol edin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void btnGeri_Click(object sender, EventArgs e)
         {

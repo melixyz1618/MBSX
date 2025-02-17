@@ -15,12 +15,17 @@ namespace MBSX
             this.previousScreen = previousScreen;
         }
 
+        public UrunCesitSecimFormu(Form1 form1)
+        {
+            this.form1 = form1;
+        }
+
         private void btnKaro_Click(object sender, EventArgs e)
         {
             if (form1 != null)
             {
                 form1.panelContainer.Controls.Clear();
-                KaroMalzemeFormu karoFormu = new KaroMalzemeFormu(form1, this);
+                KaroMalzemeFormu karoFormu = new KaroMalzemeFormu(form1, this); // 📌 Burada `this` gönderiyoruz
                 karoFormu.Dock = DockStyle.Fill;
                 form1.panelContainer.Controls.Add(karoFormu);
                 karoFormu.BringToFront();
@@ -30,6 +35,7 @@ namespace MBSX
                 MessageBox.Show("Ana form bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
         private void btnBanyo_Click(object sender, EventArgs e)

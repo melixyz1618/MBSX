@@ -19,13 +19,6 @@
             }
             base.Dispose(disposing);
         }
-
-        #region Bileşen Tasarımcısı üretimi kod
-
-        /// <summary> 
-        /// Tasarımcı desteği için gerekli metot - bu metodun 
-        ///içeriğini kod düzenleyici ile değiştirmeyin.
-        /// </summary>
         private void InitializeComponent()
         {
             btnGeri = new Button();
@@ -33,14 +26,16 @@
             // 
             // btnGeri
             // 
-            btnGeri.Location = new Point(641, 40);
+            btnGeri.Location = new Point(647, 44);
             btnGeri.Name = "btnGeri";
             btnGeri.Size = new Size(94, 29);
             btnGeri.TabIndex = 0;
             btnGeri.Text = "Geri";
             btnGeri.UseVisualStyleBackColor = true;
+            btnGeri.Click += new System.EventHandler(this.btnGeri_Click); // 📌 Buton event'ini buraya ekledik!
+
             // 
-            // DigerMalzemeFormu
+            // DiğerMalzemeFormu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -49,6 +44,13 @@
             Size = new Size(782, 453);
             ResumeLayout(false);
         }
+
+        #region Bileşen Tasarımcısı üretimi kod
+
+        /// <summary> 
+        /// Tasarımcı desteği için gerekli metot - bu metodun 
+        ///içeriğini kod düzenleyici ile değiştirmeyin.
+        /// </summary>
 
         #endregion
 
