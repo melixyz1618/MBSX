@@ -1,4 +1,6 @@
 ﻿
+using System.Data.OleDb;
+
 namespace MBSX
 {
     partial class KaroMalzemeFormu
@@ -70,7 +72,7 @@ namespace MBSX
             cmbxkdv = new ComboBox();
             cmbxdonem = new ComboBox();
             pictureBox1 = new PictureBox();
-            label20 = new Label();
+            btnResimSec = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -410,20 +412,21 @@ namespace MBSX
             pictureBox1.TabIndex = 29;
             pictureBox1.TabStop = false;
             // 
-            // label20
+            // btnResimSec
             // 
-            label20.AutoSize = true;
-            label20.Location = new Point(681, 101);
-            label20.Name = "label20";
-            label20.Size = new Size(49, 20);
-            label20.TabIndex = 30;
-            label20.Text = "Resim";
+            btnResimSec.Location = new Point(660, 90);
+            btnResimSec.Name = "btnResimSec";
+            btnResimSec.Size = new Size(94, 29);
+            btnResimSec.TabIndex = 30;
+            btnResimSec.Text = "Resim Seç";
+            btnResimSec.UseVisualStyleBackColor = true;
+            btnResimSec.Click += btnResimSec_Click;
             // 
             // KaroMalzemeFormu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(label20);
+            Controls.Add(btnResimSec);
             Controls.Add(pictureBox1);
             Controls.Add(cmbxdonem);
             Controls.Add(cmbxkdv);
@@ -471,13 +474,6 @@ namespace MBSX
             ResumeLayout(false);
             PerformLayout();
         }
-
-        private void btnKaydet_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-
         #endregion
 
         private Button btnGeri;
@@ -521,6 +517,6 @@ namespace MBSX
         private ComboBox cmbxkdv;
         private ComboBox cmbxdonem;
         private PictureBox pictureBox1;
-        private Label label20;
+        private Button btnResimSec;
     }
 }
