@@ -32,8 +32,20 @@ namespace MBSX
 
         private void btnUrun_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Ürün ekleme işlemi seçildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (form1 != null)
+            {
+                form1.panelContainer.Controls.Clear();
+                UrunCesitSecimFormu urunCesitSecimFormu = new UrunCesitSecimFormu(form1, this);
+                urunCesitSecimFormu.Dock = DockStyle.Fill;
+                form1.panelContainer.Controls.Add(urunCesitSecimFormu);
+                urunCesitSecimFormu.BringToFront();
+            }
+            else
+            {
+                MessageBox.Show("Ana form bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void btnGeri_Click(object sender, EventArgs e)
         {
