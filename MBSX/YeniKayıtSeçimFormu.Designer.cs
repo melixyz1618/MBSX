@@ -55,7 +55,7 @@
             // 
             // btnGeri
             // 
-            btnGeri.Location = new Point(653, 23);
+            btnGeri.Location = new Point(654, 56);
             btnGeri.Name = "btnGeri";
             btnGeri.Size = new Size(94, 29);
             btnGeri.TabIndex = 3;

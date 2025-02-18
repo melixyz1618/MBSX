@@ -70,8 +70,6 @@ namespace MBSX
                 MessageBox.Show("Ana form bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
         private void btnGeri_Click(object sender, EventArgs e)
         {
             if (form1 != null && previousScreen != null)

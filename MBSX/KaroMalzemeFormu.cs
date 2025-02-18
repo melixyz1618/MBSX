@@ -47,6 +47,18 @@ namespace MBSX
                             }
                         }
                     }
+                    // 🟢 Showroom tablosundan veri çekme
+                    string queryDepo = "SELECT rafNo FROM Depo";
+                    using (OleDbCommand cmd = new OleDbCommand(queryDepo, conn))
+                    {
+                        using (OleDbDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                cmbxDepo.Items.Add(reader["rafNo"].ToString());
+                            }
+                        }
+                    }
 
                     // 🟢 Iskonto tablosundan veri çekme
                     string queryIskonto = "SELECT Iskonto FROM Iskonto";
@@ -142,6 +154,7 @@ namespace MBSX
             int donem = Convert.ToInt32(cmbxdonem.SelectedItem);
             string selectedShowroom = cmbxshowroom.SelectedItem.ToString();
             int showroomId = 0;
+            string rafNo = cmbxDepo.SelectedItem.ToString();
 
             string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Veritabanı\MBSX.mdb;";
 
@@ -173,8 +186,8 @@ namespace MBSX
 
                     // **Ürünü Veritabanına Kaydetme**
                     string queryUrun = @"INSERT INTO Urun 
-            (SeriModel, UrunKodu, UrunIsmi, BrutFiyat, Boyut, Iskonto, KDV, Donem, ShowroomId, ResimYolu) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            (SeriModel, UrunKodu, UrunIsmi, BrutFiyat, Boyut, Iskonto, KDV, Donem, ShowroomId, ResimYolu,rafNo) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
                     using (OleDbCommand cmdUrun = new OleDbCommand(queryUrun, conn))
                     {
@@ -188,6 +201,7 @@ namespace MBSX
                         cmdUrun.Parameters.AddWithValue("?", donem);
                         cmdUrun.Parameters.AddWithValue("?", showroomId);
                         cmdUrun.Parameters.AddWithValue("?", resimYolu);
+                        cmdUrun.Parameters.AddWithValue("?",rafNo);
 
                         cmdUrun.ExecuteNonQuery();
                     }
