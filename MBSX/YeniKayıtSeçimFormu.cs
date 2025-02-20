@@ -6,11 +6,13 @@ namespace MBSX
     public partial class YeniKayıtSeçimFormu : UserControl
     {
         private Form1 form1;
+        private Form1 previousScreen; // Önceki ekranı sakla
 
         public YeniKayıtSeçimFormu(Form1 form1)
         {
             InitializeComponent();
             this.form1 = form1;
+            this.previousScreen = previousScreen;
         }
 
         private void btnShowroom_Click(object sender, EventArgs e)
@@ -49,18 +51,13 @@ namespace MBSX
 
         private void btnGeri_Click(object sender, EventArgs e)
         {
-            // Yeni içeriği kaldır
-            this.Parent.Controls.Clear();
-
-            // Form1 içindeki butonları tekrar göster
-            Form1 anaForm = (Form1)Application.OpenForms["Form1"];
-            if (anaForm != null)
+            if (form1 != null && previousScreen != null)
             {
-                anaForm.btnYeniKayit.Visible = true;
-                anaForm.btnKayitGuncelle.Visible = true;
-                anaForm.btnKayitAra.Visible = true;
+                form1.panelContainer.Controls.Clear(); // Showroom ekranını kaldır
+                form1.panelContainer.Controls.Add(previousScreen); // `YeniKayıtSeçimFormu` geri yükle
+                previousScreen.BringToFront();
             }
-        }
+        }   
 
 
         private void YeniKayıtSeçimFormu_Load(object sender, EventArgs e)

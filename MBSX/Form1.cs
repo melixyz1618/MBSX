@@ -16,25 +16,14 @@ namespace MBSX
 
         private void btnYeniKayit_Click(object sender, EventArgs e)
         {
-            if (this.panelContainer != null)
-            {
-                // Önce mevcut butonlarý gizle
-                btnYeniKayit.Visible = false;
-                btnKayitGuncelle.Visible = false;
-                btnKayitAra.Visible = false;
+            btnYeniKayit.Visible = false;
+            btnKayitGuncelle.Visible = false;
+            btnKayitAra.Visible = false;
 
-                // `YeniKayýtSeçimFormu` ekranýný aç
-                this.panelContainer.Controls.Clear();
-                YeniKayýtSeçimFormu yeniKayitSecim = new YeniKayýtSeçimFormu(this);
-                yeniKayitSecim.Dock = DockStyle.Fill;
-                this.panelContainer.Controls.Add(yeniKayitSecim);
-                yeniKayitSecim.BringToFront();
-            }
-            else
-            {
-                MessageBox.Show("panelContainer bulunamadý!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            YeniKayýtSeçimFormu yeniKayitSecim = new YeniKayýtSeçimFormu(this);
+            LoadUserControl(yeniKayitSecim);
         }
+
 
 
         private void btnShowroom_Click(object sender, EventArgs e)
@@ -68,6 +57,18 @@ namespace MBSX
         private void btnKayitAra_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Kayýt arama ekraný açýlacak.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public void LoadUserControl(UserControl userControl)
+        {
+            panelContainer.Controls.Clear();
+            userControl.Dock = DockStyle.Fill;
+            panelContainer.Controls.Add(userControl);
+            userControl.BringToFront();
+        }
+
+        internal void LoadUserControl(object previousScreen)
+        {
+            throw new NotImplementedException();
         }
     }
 

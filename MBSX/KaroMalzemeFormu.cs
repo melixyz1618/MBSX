@@ -201,7 +201,7 @@ namespace MBSX
                         cmdUrun.Parameters.AddWithValue("?", donem);
                         cmdUrun.Parameters.AddWithValue("?", showroomId);
                         cmdUrun.Parameters.AddWithValue("?", resimYolu);
-                        cmdUrun.Parameters.AddWithValue("?",rafNo);
+                        cmdUrun.Parameters.AddWithValue("?", rafNo);
 
                         cmdUrun.ExecuteNonQuery();
                     }
@@ -322,6 +322,9 @@ namespace MBSX
             }
         }
 
+        private void KaroMalzemeFormu_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

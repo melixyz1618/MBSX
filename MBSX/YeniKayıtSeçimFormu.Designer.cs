@@ -26,7 +26,7 @@
             // 
             // btnShowroom
             // 
-            btnShowroom.Location = new Point(215, 240);
+            btnShowroom.Location = new Point(253, 296);
             btnShowroom.Name = "btnShowroom";
             btnShowroom.Size = new Size(100, 40);
             btnShowroom.TabIndex = 0;
@@ -36,7 +36,7 @@
             // 
             // btnUrun
             // 
-            btnUrun.Location = new Point(397, 240);
+            btnUrun.Location = new Point(435, 296);
             btnUrun.Name = "btnUrun";
             btnUrun.Size = new Size(100, 40);
             btnUrun.TabIndex = 1;
@@ -47,7 +47,7 @@
             // lblSoru
             // 
             lblSoru.AutoSize = true;
-            lblSoru.Location = new Point(215, 199);
+            lblSoru.Location = new Point(253, 255);
             lblSoru.Name = "lblSoru";
             lblSoru.Size = new Size(282, 20);
             lblSoru.TabIndex = 2;
@@ -55,7 +55,7 @@
             // 
             // btnGeri
             // 
-            btnGeri.Location = new Point(654, 56);
+            btnGeri.Location = new Point(720, 49);
             btnGeri.Name = "btnGeri";
             btnGeri.Size = new Size(94, 29);
             btnGeri.TabIndex = 3;
@@ -72,7 +72,7 @@
             Controls.Add(btnUrun);
             Controls.Add(lblSoru);
             Name = "YeniKayıtSeçimFormu";
-            Size = new Size(782, 453);
+            Size = new Size(875, 550);
             Load += YeniKayıtSeçimFormu_Load;
             ResumeLayout(false);
             PerformLayout();

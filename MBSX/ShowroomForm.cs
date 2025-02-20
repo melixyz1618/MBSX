@@ -8,12 +8,20 @@ namespace MBSX
     {
         private Form1 form1; // MainForm yerine Form1 kullanıyoruz
         private YeniKayıtSeçimFormu previousScreen; // Önceki ekranı sakla
+        private YeniKayıtSeçimFormu yeniKayıtSeçimFormu1;
+        private YeniKayıtSeçimFormu yeniKayıtSeçimFormu2;
 
         public ShowroomForm(Form1 form1, YeniKayıtSeçimFormu previousScreen)
         {
             InitializeComponent();
             this.form1 = form1;
             this.previousScreen = previousScreen;
+        }
+
+        public ShowroomForm(YeniKayıtSeçimFormu yeniKayıtSeçimFormu1, YeniKayıtSeçimFormu yeniKayıtSeçimFormu2)
+        {
+            this.yeniKayıtSeçimFormu1 = yeniKayıtSeçimFormu1;
+            this.yeniKayıtSeçimFormu2 = yeniKayıtSeçimFormu2;
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)

@@ -511,6 +511,7 @@ namespace MBSX
             Controls.Add(btnGeri);
             Name = "KaroMalzemeFormu";
             Size = new Size(872, 545);
+            Load += KaroMalzemeFormu_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
