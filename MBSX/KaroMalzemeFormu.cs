@@ -124,30 +124,70 @@ namespace MBSX
         }
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            List<string> eksikAlanlar = new List<string>();
+            //List<string> eksikAlanlar = new List<string>();
 
-            if (string.IsNullOrWhiteSpace(textBox2.Text)) eksikAlanlar.Add("Ürün Kodu");
-            if (string.IsNullOrWhiteSpace(textBox3.Text)) eksikAlanlar.Add("Ürün İsmi");
-            if (string.IsNullOrWhiteSpace(textBox4.Text)) eksikAlanlar.Add("Brüt Fiyat");
-            if (string.IsNullOrWhiteSpace(textBox15.Text)) eksikAlanlar.Add("Boyut");
+            //if (string.IsNullOrWhiteSpace(textBox2.Text)) eksikAlanlar.Add("Ürün Kodu");
+            //if (string.IsNullOrWhiteSpace(textBox3.Text)) eksikAlanlar.Add("Ürün İsmi");
+            //if (string.IsNullOrWhiteSpace(textBox4.Text)) eksikAlanlar.Add("Brüt Fiyat");
+            //if (string.IsNullOrWhiteSpace(textBox15.Text)) eksikAlanlar.Add("Boyut");
 
-            if (cmbxiskonto.SelectedIndex == -1) eksikAlanlar.Add("İskonto");
-            if (cmbxkdv.SelectedIndex == -1) eksikAlanlar.Add("KDV");
-            if (cmbxdonem.SelectedIndex == -1) eksikAlanlar.Add("Dönem");
-            if (cmbxshowroom.SelectedIndex == -1) eksikAlanlar.Add("Showroom");
+            //if (cmbxiskonto.SelectedIndex == -1) eksikAlanlar.Add("İskonto");
+            //if (cmbxkdv.SelectedIndex == -1) eksikAlanlar.Add("KDV");
+            //if (cmbxdonem.SelectedIndex == -1) eksikAlanlar.Add("Dönem");
+            //if (cmbxshowroom.SelectedIndex == -1) eksikAlanlar.Add("Showroom");
 
-            if (eksikAlanlar.Count > 0)
-            {
-                MessageBox.Show("Lütfen aşağıdaki alanları doldurun:\n\n" + string.Join("\n", eksikAlanlar),
-                    "Eksik Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            //if (eksikAlanlar.Count > 0)
+            //{
+            //    MessageBox.Show("Lütfen aşağıdaki alanları doldurun:\n\n" + string.Join("\n", eksikAlanlar),
+            //        "Eksik Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
 
             // **Formdan gelen verileri alalım**
             string seriModel = textBox1.Text.Trim();
             string urunKodu = textBox2.Text.Trim();
             string urunIsmi = textBox3.Text.Trim();
-            decimal brutFiyat = Convert.ToDecimal(textBox4.Text.Trim());
+            string brutFiyat = string.IsNullOrWhiteSpace(textBox4.Text)
+    ? "NULL"
+    : textBox4.Text.Trim().Replace(".", ",");  // Access için nokta yerine virgül kullan
+
+            string query = $@"
+    INSERT INTO Urun (BrutFiyat) 
+    VALUES ({brutFiyat})";
+            string urunGrubu = textBox5.Text.Trim();
+            string birim = textBox6.Text.Trim();
+            string kalinlik = textBox7.Text.Trim();
+            string kutuIciAdet = string.IsNullOrWhiteSpace(textBox8.Text)
+                ? "NULL"
+                : textBox8.Text.Trim().Replace(".", ",");  // Access için nokta yerine virgül kullan
+
+            string query1 = $@"
+    INSERT INTO Urun (KutuIciAdet) 
+    VALUES ({kutuIciAdet})";
+            string kutuIcim2 = string.IsNullOrWhiteSpace(textBox9.Text)
+                ? "NULL"
+                : textBox9.Text.Trim().Replace(".", ",");  // Access için nokta yerine virgül kullan
+
+            string query2= $@"
+    INSERT INTO Urun (KutuIcim2) 
+    VALUES ({kutuIcim2})";
+            string kutuIciKg = string.IsNullOrWhiteSpace(textBox10.Text)
+                ? "NULL"
+                : textBox10.Text.Trim().Replace(".", ",");  // Access için nokta yerine virgül kullan
+
+            string query3 = $@"
+    INSERT INTO Urun (KutuIciKg) 
+    VALUES ({kutuIciKg})";
+            string paletIciKutu = string.IsNullOrWhiteSpace(textBox11.Text)
+                ? "NULL"
+                : textBox11.Text.Trim().Replace(".", ",");  // Access için nokta yerine virgül kullan
+
+            string query4 = $@"
+    INSERT INTO Urun (PaletIciKutu) 
+    VALUES ({paletIciKutu})";
+            int paletIcim2 = Convert.ToInt32(textBox12.Text.Trim());
+            object paletKg = string.IsNullOrWhiteSpace(textBox13.Text) ? (object)DBNull.Value : Convert.ToInt32(textBox13.Text.Trim());
+            string yuzey = textBox14.Text.Trim();
             string boyut = textBox15.Text.Trim();
             int iskonto = Convert.ToInt32(cmbxiskonto.SelectedItem);
             int kdv = Convert.ToInt32(cmbxkdv.SelectedItem);
@@ -186,8 +226,8 @@ namespace MBSX
 
                     // **Ürünü Veritabanına Kaydetme**
                     string queryUrun = @"INSERT INTO Urun 
-            (SeriModel, UrunKodu, UrunIsmi, BrutFiyat, Boyut, Iskonto, KDV, Donem, ShowroomId, ResimYolu,rafNo) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+            (SeriModel, UrunKodu, UrunIsmi, BrutFiyat, UrunGrubu, Birim, Kalinlik, KutuIciAdet, KutuIcim2, Kutukg, PaletIciKutu, PaletIcim2, PaletKg, Yuzey, Boyut, Iskonto, KDV, Donem, ShowroomId, ResimYolu, rafNo) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                     using (OleDbCommand cmdUrun = new OleDbCommand(queryUrun, conn))
                     {
@@ -195,6 +235,16 @@ namespace MBSX
                         cmdUrun.Parameters.AddWithValue("?", urunKodu);
                         cmdUrun.Parameters.AddWithValue("?", urunIsmi);
                         cmdUrun.Parameters.AddWithValue("?", brutFiyat);
+                        cmdUrun.Parameters.AddWithValue("?", urunGrubu);
+                        cmdUrun.Parameters.AddWithValue("?", birim);
+                        cmdUrun.Parameters.AddWithValue("?", kalinlik);
+                        cmdUrun.Parameters.AddWithValue("?", kutuIciAdet);
+                        cmdUrun.Parameters.AddWithValue("?", kutuIcim2);
+                        cmdUrun.Parameters.AddWithValue("?", kutuKg);
+                        cmdUrun.Parameters.AddWithValue("?", paletIciKutu);
+                        cmdUrun.Parameters.AddWithValue("?", paletIcim2);
+                        cmdUrun.Parameters.AddWithValue("?", paletKg);
+                        cmdUrun.Parameters.AddWithValue("?", yuzey);
                         cmdUrun.Parameters.AddWithValue("?", boyut);
                         cmdUrun.Parameters.AddWithValue("?", iskonto);
                         cmdUrun.Parameters.AddWithValue("?", kdv);
@@ -326,5 +376,20 @@ namespace MBSX
         {
 
         }
+        private void textBox8_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Sadece rakamları ve bir adet nokta girilmesini sağla
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true; // Geçersiz karakteri engelle
+            }
+
+            // Kullanıcının birden fazla nokta girmesini engelle
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true; // İkinci noktayı engelle
+            }
+        }
+
     }
 }
