@@ -106,10 +106,6 @@ namespace MBSX
                 MessageBox.Show("Veritabanı bağlantı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-
         private void btnGeri_Click(object sender, EventArgs e)
         {
             if (form1 != null && previousScreen != null)
@@ -261,9 +257,6 @@ namespace MBSX
                 }
             }
         }
-
-
-
         private void FormuTemizle()
         {
             // Tüm textboxları temizle
@@ -324,7 +317,6 @@ namespace MBSX
                 }
             }
         }
-
         private void btnResimSec_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -355,10 +347,15 @@ namespace MBSX
                     }
 
                     // 📌 İlk resmi PictureBox'a göster
-                    if (pictureBox1.Image == null)
+                    // Eğer PictureBox'ta önceden bir resim varsa, serbest bırakın
+                    if (pictureBox1.Image != null)
                     {
-                        pictureBox1.Image = Image.FromFile(newImagePath);
+                        pictureBox1.Image.Dispose();
                     }
+
+                    // Yeni resmi yükleyin
+                    pictureBox1.Image = Image.FromFile(newImagePath);
+
 
                     // 📌 Seçilen resimleri listeye kaydet
                     selectedImages.Add(newImagePath);

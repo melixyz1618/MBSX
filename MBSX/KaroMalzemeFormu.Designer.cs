@@ -82,7 +82,7 @@ namespace MBSX
             // 
             // btnGeri
             // 
-            btnGeri.Location = new Point(753, 58);
+            btnGeri.Location = new Point(753, 57);
             btnGeri.Name = "btnGeri";
             btnGeri.Size = new Size(94, 29);
             btnGeri.TabIndex = 0;
@@ -333,7 +333,7 @@ namespace MBSX
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(620, 164);
+            label16.Location = new Point(593, 258);
             label16.Name = "label16";
             label16.Size = new Size(57, 20);
             label16.TabIndex = 17;
@@ -342,7 +342,7 @@ namespace MBSX
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(629, 218);
+            label17.Location = new Point(602, 312);
             label17.Name = "label17";
             label17.Size = new Size(38, 20);
             label17.TabIndex = 19;
@@ -351,7 +351,7 @@ namespace MBSX
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(619, 281);
+            label18.Location = new Point(592, 375);
             label18.Name = "label18";
             label18.Size = new Size(58, 20);
             label18.TabIndex = 21;
@@ -359,7 +359,7 @@ namespace MBSX
             // 
             // btnKaydet
             // 
-            btnKaydet.Location = new Point(753, 479);
+            btnKaydet.Location = new Point(753, 449);
             btnKaydet.Name = "btnKaydet";
             btnKaydet.Size = new Size(94, 29);
             btnKaydet.TabIndex = 23;
@@ -370,7 +370,7 @@ namespace MBSX
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(611, 348);
+            label19.Location = new Point(738, 258);
             label19.Name = "label19";
             label19.Size = new Size(81, 20);
             label19.TabIndex = 24;
@@ -379,7 +379,7 @@ namespace MBSX
             // cmbxshowroom
             // 
             cmbxshowroom.FormattingEnabled = true;
-            cmbxshowroom.Location = new Point(569, 371);
+            cmbxshowroom.Location = new Point(696, 281);
             cmbxshowroom.Name = "cmbxshowroom";
             cmbxshowroom.Size = new Size(151, 28);
             cmbxshowroom.TabIndex = 25;
@@ -387,7 +387,7 @@ namespace MBSX
             // cmbxiskonto
             // 
             cmbxiskonto.FormattingEnabled = true;
-            cmbxiskonto.Location = new Point(566, 187);
+            cmbxiskonto.Location = new Point(539, 281);
             cmbxiskonto.Name = "cmbxiskonto";
             cmbxiskonto.Size = new Size(151, 28);
             cmbxiskonto.TabIndex = 26;
@@ -395,7 +395,7 @@ namespace MBSX
             // cmbxkdv
             // 
             cmbxkdv.FormattingEnabled = true;
-            cmbxkdv.Location = new Point(566, 241);
+            cmbxkdv.Location = new Point(539, 335);
             cmbxkdv.Name = "cmbxkdv";
             cmbxkdv.Size = new Size(151, 28);
             cmbxkdv.TabIndex = 27;
@@ -403,22 +403,22 @@ namespace MBSX
             // cmbxdonem
             // 
             cmbxdonem.FormattingEnabled = true;
-            cmbxdonem.Location = new Point(569, 304);
+            cmbxdonem.Location = new Point(542, 398);
             cmbxdonem.Name = "cmbxdonem";
             cmbxdonem.Size = new Size(151, 28);
             cmbxdonem.TabIndex = 28;
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(580, 92);
+            pictureBox1.Location = new Point(548, 92);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(125, 62);
+            pictureBox1.Size = new Size(271, 140);
             pictureBox1.TabIndex = 29;
             pictureBox1.TabStop = false;
             // 
             // btnResimSec
             // 
-            btnResimSec.Location = new Point(598, 57);
+            btnResimSec.Location = new Point(625, 57);
             btnResimSec.Name = "btnResimSec";
             btnResimSec.Size = new Size(94, 29);
             btnResimSec.TabIndex = 30;
@@ -445,7 +445,7 @@ namespace MBSX
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(619, 407);
+            label21.Location = new Point(746, 317);
             label21.Name = "label21";
             label21.Size = new Size(46, 20);
             label21.TabIndex = 33;
@@ -454,7 +454,7 @@ namespace MBSX
             // cmbxDepo
             // 
             cmbxDepo.FormattingEnabled = true;
-            cmbxDepo.Location = new Point(569, 430);
+            cmbxDepo.Location = new Point(696, 340);
             cmbxDepo.Name = "cmbxDepo";
             cmbxDepo.Size = new Size(151, 28);
             cmbxDepo.TabIndex = 34;
