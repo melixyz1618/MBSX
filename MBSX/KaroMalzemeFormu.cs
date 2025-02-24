@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
@@ -124,146 +125,139 @@ namespace MBSX
         }
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            //List<string> eksikAlanlar = new List<string>();
-
-            //if (string.IsNullOrWhiteSpace(textBox2.Text)) eksikAlanlar.Add("Ürün Kodu");
-            //if (string.IsNullOrWhiteSpace(textBox3.Text)) eksikAlanlar.Add("Ürün İsmi");
-            //if (string.IsNullOrWhiteSpace(textBox4.Text)) eksikAlanlar.Add("Brüt Fiyat");
-            //if (string.IsNullOrWhiteSpace(textBox15.Text)) eksikAlanlar.Add("Boyut");
-
-            //if (cmbxiskonto.SelectedIndex == -1) eksikAlanlar.Add("İskonto");
-            //if (cmbxkdv.SelectedIndex == -1) eksikAlanlar.Add("KDV");
-            //if (cmbxdonem.SelectedIndex == -1) eksikAlanlar.Add("Dönem");
-            //if (cmbxshowroom.SelectedIndex == -1) eksikAlanlar.Add("Showroom");
-
-            //if (eksikAlanlar.Count > 0)
-            //{
-            //    MessageBox.Show("Lütfen aşağıdaki alanları doldurun:\n\n" + string.Join("\n", eksikAlanlar),
-            //        "Eksik Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-            // **Formdan gelen verileri alalım**
-            string seriModel = textBox1.Text.Trim();
-            string urunKodu = textBox2.Text.Trim();
-            string urunIsmi = textBox3.Text.Trim();
-            string brutFiyat = string.IsNullOrWhiteSpace(textBox4.Text)
-    ? "NULL"
-    : textBox4.Text.Trim().Replace(".", ",");  // Access için nokta yerine virgül kullan
-
-            string query = $@"
-    INSERT INTO Urun (BrutFiyat) 
-    VALUES ({brutFiyat})";
-            string urunGrubu = textBox5.Text.Trim();
-            string birim = textBox6.Text.Trim();
-            string kalinlik = textBox7.Text.Trim();
-            string kutuIciAdet = string.IsNullOrWhiteSpace(textBox8.Text)
-                ? "NULL"
-                : textBox8.Text.Trim().Replace(".", ",");  // Access için nokta yerine virgül kullan
-
-            string query1 = $@"
-    INSERT INTO Urun (KutuIciAdet) 
-    VALUES ({kutuIciAdet})";
-            string kutuIcim2 = string.IsNullOrWhiteSpace(textBox9.Text)
-                ? "NULL"
-                : textBox9.Text.Trim().Replace(".", ",");  // Access için nokta yerine virgül kullan
-
-            string query2= $@"
-    INSERT INTO Urun (KutuIcim2) 
-    VALUES ({kutuIcim2})";
-            string kutuIciKg = string.IsNullOrWhiteSpace(textBox10.Text)
-                ? "NULL"
-                : textBox10.Text.Trim().Replace(".", ",");  // Access için nokta yerine virgül kullan
-
-            string query3 = $@"
-    INSERT INTO Urun (KutuIciKg) 
-    VALUES ({kutuIciKg})";
-            string paletIciKutu = string.IsNullOrWhiteSpace(textBox11.Text)
-                ? "NULL"
-                : textBox11.Text.Trim().Replace(".", ",");  // Access için nokta yerine virgül kullan
-
-            string query4 = $@"
-    INSERT INTO Urun (PaletIciKutu) 
-    VALUES ({paletIciKutu})";
-            int paletIcim2 = Convert.ToInt32(textBox12.Text.Trim());
-            object paletKg = string.IsNullOrWhiteSpace(textBox13.Text) ? (object)DBNull.Value : Convert.ToInt32(textBox13.Text.Trim());
-            string yuzey = textBox14.Text.Trim();
-            string boyut = textBox15.Text.Trim();
-            int iskonto = Convert.ToInt32(cmbxiskonto.SelectedItem);
-            int kdv = Convert.ToInt32(cmbxkdv.SelectedItem);
-            int donem = Convert.ToInt32(cmbxdonem.SelectedItem);
-            string selectedShowroom = cmbxshowroom.SelectedItem.ToString();
-            int showroomId = 0;
-            string rafNo = cmbxDepo.SelectedItem.ToString();
-
-            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Veritabanı\MBSX.mdb;";
-
-            using (OleDbConnection conn = new OleDbConnection(connectionString))
             {
-                try
+                List<string> eksikAlanlar = new List<string>();
+
+                if (string.IsNullOrWhiteSpace(textBox2.Text))
+                    eksikAlanlar.Add("Ürün Kodu");
+                if (string.IsNullOrWhiteSpace(textBox3.Text))
+                    eksikAlanlar.Add("Ürün İsmi");
+                if (string.IsNullOrWhiteSpace(textBox4.Text))
+                    eksikAlanlar.Add("Brüt Fiyat");
+                if (string.IsNullOrWhiteSpace(textBox15.Text))
+                    eksikAlanlar.Add("Boyut");
+                if (cmbxiskonto.SelectedIndex == -1)
+                    eksikAlanlar.Add("İskonto");
+                if (cmbxkdv.SelectedIndex == -1)
+                    eksikAlanlar.Add("KDV");
+                if (cmbxdonem.SelectedIndex == -1)
+                    eksikAlanlar.Add("Dönem");
+                if (cmbxshowroom.SelectedIndex == -1)
+                    eksikAlanlar.Add("Showroom");
+
+                if (eksikAlanlar.Count > 0)
                 {
-                    conn.Open();
+                    MessageBox.Show("Lütfen aşağıdaki alanları doldurun:\n\n" + string.Join("\n", eksikAlanlar),
+                        "Eksik Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                    // **Showroom ID'yi bulma**
-                    string showroomQuery = "SELECT id FROM Showroom WHERE ShowroomAdi = ?";
-                    using (OleDbCommand cmdShowroom = new OleDbCommand(showroomQuery, conn))
+                // **Formdan gelen verileri alalım**
+                string seriModel = textBox1.Text.Trim();
+                string urunKodu = textBox2.Text.Trim();
+                string urunIsmi = textBox3.Text.Trim();
+                string brutFiyat = string.IsNullOrWhiteSpace(textBox4.Text)
+                    ? "NULL" : textBox4.Text.Trim().Replace(".", ",");  // Access için nokta yerine virgül kullan
+                     string query = $@" INSERT INTO Urun (BrutFiyat)  VALUES ({brutFiyat})";
+                string urunGrubu = textBox5.Text.Trim();
+                string birim = textBox6.Text.Trim();
+                string kalinlik = textBox7.Text.Trim();
+                string kutuIciAdet = string.IsNullOrWhiteSpace(textBox8.Text) ? "0"  // Boşsa 0 olarak ata
+                    : textBox8.Text.Trim().Replace(".", ","); 
+                        string query1 = $@" INSERT INTO Urun (KutuIciAdet)  VALUES ({kutuIciAdet})";
+                string kutuIcim2 = string.IsNullOrWhiteSpace(textBox9.Text)  ? "0"  // Boşsa 0 olarak ata
+                    : textBox9.Text.Trim().Replace(".", ",");
+                         string query2 = $@" INSERT INTO Urun (KutuIcim2)VALUES ({kutuIcim2})";
+                string kutuKg = string.IsNullOrWhiteSpace(textBox10.Text) ? "0"
+                    : textBox10.Text.Trim().Replace(".", ",");
+                         string query3 = $@" INSERT INTO Urun (KutuKg)VALUES ({kutuKg})";
+                string paletIciKutu = string.IsNullOrWhiteSpace(textBox11.Text) ? "0"
+                     : textBox11.Text.Trim().Replace(".", ",");
+                          string query4 = $@" INSERT INTO Urun (PaletIciKutu)VALUES ({paletIciKutu})";
+                string paletIcim2 = string.IsNullOrWhiteSpace(textBox12.Text) ? "0"
+                      : textBox12.Text.Trim().Replace(".", ",");
+                           string query5 = $@" INSERT INTO Urun (PaletIcim2)VALUES ({paletIcim2})";
+                string paletKg = string.IsNullOrWhiteSpace(textBox13.Text) ? "0"
+                       : textBox13.Text.Trim().Replace(".", ",");
+                            string query6 = $@" INSERT INTO Urun (PaletKg)VALUES ({paletKg})";
+                string yuzey = textBox14.Text.Trim();
+                string boyut = textBox15.Text.Trim();
+                int iskonto = Convert.ToInt32(cmbxiskonto.SelectedItem);
+                int kdv = Convert.ToInt32(cmbxkdv.SelectedItem);
+                int donem = Convert.ToInt32(cmbxdonem.SelectedItem);
+                string selectedShowroom = cmbxshowroom.SelectedItem.ToString();
+                int showroomId = 0;
+                string rafNo = cmbxDepo.SelectedItem.ToString();
+
+                string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Veritabanı\MBSX.mdb;";
+
+                using (OleDbConnection conn = new OleDbConnection(connectionString))
+                {
+                    try
                     {
-                        cmdShowroom.Parameters.AddWithValue("?", selectedShowroom);
-                        object result = cmdShowroom.ExecuteScalar();
-                        if (result != null)
-                        {
-                            showroomId = Convert.ToInt32(result);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Seçilen showroom veritabanında bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                    }
+                        conn.Open();
 
-                    // **Resim Yolunu Belirleme**
-                    string resimYolu = selectedImages.Count > 0 ? selectedImages[0] : "";
+                        // **Showroom ID'yi bulma**
+                        string showroomQuery = "SELECT id FROM Showroom WHERE ShowroomAdi = ?";
+                        using (OleDbCommand cmdShowroom = new OleDbCommand(showroomQuery, conn))
+                        {
+                            cmdShowroom.Parameters.AddWithValue("?", selectedShowroom);
+                            object result = cmdShowroom.ExecuteScalar();
+                            if (result != null)
+                            {
+                                showroomId = Convert.ToInt32(result);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Seçilen showroom veritabanında bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
 
-                    // **Ürünü Veritabanına Kaydetme**
-                    string queryUrun = @"INSERT INTO Urun 
+                        // **Resim Yolunu Belirleme**
+                        string resimYolu = selectedImages.Count > 0 ? selectedImages[0] : "";
+
+                        // **Ürünü Veritabanına Kaydetme**
+                        string queryUrun = @"INSERT INTO Urun 
             (SeriModel, UrunKodu, UrunIsmi, BrutFiyat, UrunGrubu, Birim, Kalinlik, KutuIciAdet, KutuIcim2, Kutukg, PaletIciKutu, PaletIcim2, PaletKg, Yuzey, Boyut, Iskonto, KDV, Donem, ShowroomId, ResimYolu, rafNo) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-                    using (OleDbCommand cmdUrun = new OleDbCommand(queryUrun, conn))
-                    {
-                        cmdUrun.Parameters.AddWithValue("?", seriModel);
-                        cmdUrun.Parameters.AddWithValue("?", urunKodu);
-                        cmdUrun.Parameters.AddWithValue("?", urunIsmi);
-                        cmdUrun.Parameters.AddWithValue("?", brutFiyat);
-                        cmdUrun.Parameters.AddWithValue("?", urunGrubu);
-                        cmdUrun.Parameters.AddWithValue("?", birim);
-                        cmdUrun.Parameters.AddWithValue("?", kalinlik);
-                        cmdUrun.Parameters.AddWithValue("?", kutuIciAdet);
-                        cmdUrun.Parameters.AddWithValue("?", kutuIcim2);
-                        cmdUrun.Parameters.AddWithValue("?", kutuKg);
-                        cmdUrun.Parameters.AddWithValue("?", paletIciKutu);
-                        cmdUrun.Parameters.AddWithValue("?", paletIcim2);
-                        cmdUrun.Parameters.AddWithValue("?", paletKg);
-                        cmdUrun.Parameters.AddWithValue("?", yuzey);
-                        cmdUrun.Parameters.AddWithValue("?", boyut);
-                        cmdUrun.Parameters.AddWithValue("?", iskonto);
-                        cmdUrun.Parameters.AddWithValue("?", kdv);
-                        cmdUrun.Parameters.AddWithValue("?", donem);
-                        cmdUrun.Parameters.AddWithValue("?", showroomId);
-                        cmdUrun.Parameters.AddWithValue("?", resimYolu);
-                        cmdUrun.Parameters.AddWithValue("?", rafNo);
+                        using (OleDbCommand cmdUrun = new OleDbCommand(queryUrun, conn))
+                        {
+                            cmdUrun.Parameters.AddWithValue("?", seriModel);
+                            cmdUrun.Parameters.AddWithValue("?", urunKodu);
+                            cmdUrun.Parameters.AddWithValue("?", urunIsmi);
+                            cmdUrun.Parameters.AddWithValue("?", brutFiyat);
+                            cmdUrun.Parameters.AddWithValue("?", urunGrubu);
+                            cmdUrun.Parameters.AddWithValue("?", birim);
+                            cmdUrun.Parameters.AddWithValue("?", kalinlik);
+                            cmdUrun.Parameters.AddWithValue("?", kutuIciAdet);
+                            cmdUrun.Parameters.AddWithValue("?", kutuIcim2);
+                            cmdUrun.Parameters.AddWithValue("?", kutuKg);
+                            cmdUrun.Parameters.AddWithValue("?", paletIciKutu);
+                            cmdUrun.Parameters.AddWithValue("?", paletIcim2);
+                            cmdUrun.Parameters.AddWithValue("?", paletKg);
+                            cmdUrun.Parameters.AddWithValue("?", yuzey);
+                            cmdUrun.Parameters.AddWithValue("?", boyut);
+                            cmdUrun.Parameters.AddWithValue("?", iskonto);
+                            cmdUrun.Parameters.AddWithValue("?", kdv);
+                            cmdUrun.Parameters.AddWithValue("?", donem);
+                            cmdUrun.Parameters.AddWithValue("?", showroomId);
+                            cmdUrun.Parameters.AddWithValue("?", resimYolu);
+                            cmdUrun.Parameters.AddWithValue("?", rafNo);
 
-                        cmdUrun.ExecuteNonQuery();
+                            cmdUrun.ExecuteNonQuery();
+                        }
+
+                        MessageBox.Show("Ürün başarıyla kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // 📌 **Ekranı Temizle**
+                        FormuTemizle();
                     }
-
-                    MessageBox.Show("Ürün başarıyla kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // 📌 **Ekranı Temizle**
-                    FormuTemizle();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Veritabanı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Veritabanı hatası: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
